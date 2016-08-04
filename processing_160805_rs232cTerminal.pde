@@ -3,6 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ *   - remove intervalUI_setup()
  *   - remove turnOnOffUI_setup()
  *   - remove 1 second interval in draw()
  *   - remove sendTestString()
@@ -76,15 +77,6 @@ void amplitudeUI_setup() {
       ;
 }
 
-void intervalUI_setup() {
-    cp5.addSlider(kIntervalUI)
-      .setPosition(100, 420)
-      .setSize(250, 20)
-      .setRange(1, 300)
-      .setValue(10)
-      ;    
-}
-
 void setup() {
   size(500,500);
   frameRate(10);
@@ -92,7 +84,6 @@ void setup() {
   cp5 = new ControlP5(this);
   
   amplitudeUI_setup();
-  intervalUI_setup();
 
   List lst = Arrays.asList(Serial.list());
   
