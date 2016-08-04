@@ -3,6 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ *   - remove [kAmplitudeName*]
  *   - remove amplitudeUI_setup()
  *   - change serial baud rate from 9600 to 115200 bps
  *   - remove getIntervaledValue()
@@ -45,10 +46,6 @@ int previousSecond = -1;
 
 CheckBox checkbox;
 
-final String kAmplitudeName1 = "amplitude1";
-final String kAmplitudeName2 = "amplitude2";
-final String kAmplitudeName3 = "amplitude3";
-final String kAmplitudeName4 = "amplitude4";
 final String kIntervalUI = "interval_sec";
 
 ControlP5 btnOpen;
