@@ -3,6 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ *   - change serial baud rate from 9600 to 115200 bps
  *   - remove getIntervaledValue()
  *   - remove intervalUI_setup()
  *   - remove turnOnOffUI_setup()
@@ -107,7 +108,7 @@ void dropdownCOM(int n)
      myPort.stop(); 
      myPort = null;
   }
-  myPort = new Serial(this, Serial.list()[curSerial], 9600);
+  myPort = new Serial(this, Serial.list()[curSerial], 115200);
   myPort.bufferUntil('\n');  
 }
 
@@ -122,7 +123,7 @@ void serialEvent(Serial myPort) {
 //   if (myPort != null) {
 //      myPort.stop(); 
 //   }
-//   myPort = new Serial(this, Serial.list()[(int)curSerial], 9600);
+//   myPort = new Serial(this, Serial.list()[(int)curSerial], 115200);
 //   myPort.bufferUntil('\n');
 // }
 
