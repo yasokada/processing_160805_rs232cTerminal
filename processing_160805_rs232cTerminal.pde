@@ -4,6 +4,8 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 
 /*
+ * v0.3 2016 Aug. 05
+ *   - show current millisecond
  *   - show current timestamp
  *   - tweak locations of components
  * v0.2 2016 Aug. 05
@@ -98,7 +100,8 @@ void serialEvent(Serial myPort) {
     dispLabel = dispLabel + "\r\n";
    }
    
-   dispLabel = dispLabel + getCurrentTimeStamp() + " : ";
+   dispLabel = dispLabel + getCurrentTimeStamp() + ".";
+   dispLabel = dispLabel + getCurrentMilliSecond() + " : ";
 
    dispLabel = dispLabel + mystr;
    dispLabel = suppressToNLines(dispLabel, /*nlines=*/15);
@@ -131,6 +134,11 @@ String getCurrentTimeStamp() {
     Date now = new Date();
     String strDate = sdfDate.format(now);
     return strDate;
+}
+
+String getCurrentMilliSecond() {
+  long millis = System.currentTimeMillis() % 1000;
+  return String.valueOf(millis);
 }
 
 //void openPort() {
