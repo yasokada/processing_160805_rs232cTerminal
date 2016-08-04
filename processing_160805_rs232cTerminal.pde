@@ -3,6 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ *   - remove sendTestString()
  *   - echo back on serial rx 
  * ============== branched from processing_160716_uartSender v0.5 ================
  * v0.5 2016 Jul. 25
@@ -156,47 +157,6 @@ float getIntervaledValue(float amplitude, int elapsed_sec)
   return ret;
 }
 
-void sendTestString()
-{
-  if (myPort == null) {
-    return;
-  }
-  
-  int elapsed_sec = millis() / 1000; 
-  String wrkstr;
-  final int numItems = 4;
-  
-  if (curSerial >= 0) {
-    String ret = "";
-    float[] amplitude = new float[numItems];
-    amplitude[0] = cp5.getController(kAmplitudeName1).getValue();
-    amplitude[1] = cp5.getController(kAmplitudeName2).getValue();
-    amplitude[2] = cp5.getController(kAmplitudeName3).getValue();
-    amplitude[3] = cp5.getController(kAmplitudeName4).getValue();
-
-    wrkstr = "";
-    for(int idx=0; idx<numItems; idx++) {
-      int ckd = (int)checkbox.getArrayValue()[idx];
-      if (ckd == 0) {
-        continue;
-      }
-      if (wrkstr.length() > 0) {
-        wrkstr = wrkstr + "  ";
-      }
-      wrkstr = wrkstr + String.format("%.2f", getIntervaledValue(amplitude[idx], elapsed_sec) );
-    }
-      
-    //ret = str(elapsed_sec);
-    //ret = ret + "  " + wrkstr;
-    ret = wrkstr;
-
-    ret = ret + "\r\n";
-//    ret = ret + ",3.14, 2.71, 6.022, 1023\r\n";
-//    println(ret);
-    myPort.write(ret);
-  }
-}
-
 void draw() {
   background(0);  
 
@@ -205,8 +165,6 @@ void draw() {
   if (curSec == previousSecond) {
     return;
   }
-  previousSecond = curSec;
- 
-  //
-  sendTestString();
+  previousSecond = curSec; 
+
 }
