@@ -3,6 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ *   - tweak locations of components
  * v0.2 2016 Aug. 05
  *   - show serial rx text on the window
  *   - add [dispLabel]
@@ -56,7 +57,7 @@ ControlP5 btnOpen;
 String dispLabel = "";
 
 void setup() {
-  size(500,500);
+  size(700, 500);
   frameRate(10);
   
   cp5 = new ControlP5(this);
@@ -64,7 +65,7 @@ void setup() {
   List lst = Arrays.asList(Serial.list());
   
   cp5.addScrollableList("dropdownCOM")
-     .setPosition(100, 100)
+     .setPosition(20, 20)
      .setSize(200, 100)
      .setBarHeight(20)
      .setItemHeight(20)
@@ -135,6 +136,6 @@ void draw() {
   
   if (dispLabel.length() > 0) {
     fill(50);
-    text(dispLabel, 10, 10, 700, 80);
+    text(dispLabel, 10, 100, 700, 400);
   }
 }
