@@ -3,6 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ *   - remove turnOnOffUI_setup()
  *   - remove 1 second interval in draw()
  *   - remove sendTestString()
  *   - echo back on serial rx 
@@ -84,19 +85,6 @@ void intervalUI_setup() {
       ;    
 }
 
-void turnOnOffUI_setup() {
-  checkbox = cp5.addCheckBox("checkBox")
-    .setPosition(100, 220)
-    .setSize(20, 20)
-    .setItemsPerRow(4)
-    .setSpacingColumn(50)
-    .addItem("ITEM0", 0)
-    .addItem("ITEM1", 1)
-    .addItem("ITEM2", 2)
-    .addItem("ITEM3", 3) 
-    ;
-}
-
 void setup() {
   size(500,500);
   frameRate(10);
@@ -105,7 +93,6 @@ void setup() {
   
   amplitudeUI_setup();
   intervalUI_setup();
-  turnOnOffUI_setup();
 
   List lst = Arrays.asList(Serial.list());
   
