@@ -3,7 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
- * 
+ *   - echo back on serial rx 
  * ============== branched from processing_160716_uartSender v0.5 ================
  * v0.5 2016 Jul. 25
  *   - add checkbox to turn ON/OFF the output of items
@@ -131,9 +131,9 @@ void dropdownCOM(int n)
 }
 
 void serialEvent(Serial myPort) { 
-   //String mystr = myPort.readStringUntil('\n');
-   //mystr = trim(mystr);
-   //println(mystr);
+   String mystr = myPort.readStringUntil('\n');
+   mystr = trim(mystr);
+   println(mystr);
 }
 
 //void openPort() {
