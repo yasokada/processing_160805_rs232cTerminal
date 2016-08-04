@@ -3,6 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ *   - remove 1 second interval in draw()
  *   - remove sendTestString()
  *   - echo back on serial rx 
  * ============== branched from processing_160716_uartSender v0.5 ================
@@ -159,12 +160,4 @@ float getIntervaledValue(float amplitude, int elapsed_sec)
 
 void draw() {
   background(0);  
-
-  // for 1 second interval
-  int curSec = second();
-  if (curSec == previousSecond) {
-    return;
-  }
-  previousSecond = curSec; 
-
 }
