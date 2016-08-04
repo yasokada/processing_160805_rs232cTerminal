@@ -3,6 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ *   - remove amplitudeUI_setup()
  *   - change serial baud rate from 9600 to 115200 bps
  *   - remove getIntervaledValue()
  *   - remove intervalUI_setup()
@@ -52,41 +53,12 @@ final String kIntervalUI = "interval_sec";
 
 ControlP5 btnOpen;
 
-void amplitudeUI_setup() {
-    cp5.addSlider(kAmplitudeName1)
-      .setPosition(100, 250)
-      .setSize(20, 140)
-      .setRange(0, 300)
-      .setValue(31.41)
-      ;
-    cp5.addSlider(kAmplitudeName2)
-      .setPosition(170, 250)
-      .setSize(20, 140)
-      .setRange(0, 300)
-      .setValue(27.18)
-      ;
-    cp5.addSlider(kAmplitudeName3)
-      .setPosition(240, 250)
-      .setSize(20, 140)
-      .setRange(0, 300)
-      .setValue(60.22)
-      ;
-    cp5.addSlider(kAmplitudeName4)
-      .setPosition(310, 250)
-      .setSize(20, 140)
-      .setRange(0, 300)
-      .setValue(102.3)
-      ;
-}
-
 void setup() {
   size(500,500);
   frameRate(10);
   
   cp5 = new ControlP5(this);
   
-  amplitudeUI_setup();
-
   List lst = Arrays.asList(Serial.list());
   
   cp5.addScrollableList("dropdownCOM")
