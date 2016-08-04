@@ -3,6 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ * v0.1 2016 Aug. 05
  *   - remove [sliderValue]
  *   - remove [numSerial]
  *   - remove [previousSecond]
