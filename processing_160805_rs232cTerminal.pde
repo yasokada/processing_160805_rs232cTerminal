@@ -3,6 +3,9 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ * v0.2 2016 Aug. 05
+ *   - show serial rx text on the window
+ *   - add [dispLabel]
  *   - add suppressToNLines()
  * v0.1 2016 Aug. 05
  *   - remove [sliderValue]
@@ -50,6 +53,8 @@ int curSerial = -1;
 
 ControlP5 btnOpen;
 
+String dispLabel = "";
+
 void setup() {
   size(500,500);
   frameRate(10);
@@ -85,6 +90,12 @@ void serialEvent(Serial myPort) {
    String mystr = myPort.readStringUntil('\n');
    mystr = trim(mystr);
    println(mystr);
+   
+   if (dispLabel.length() > 0) {
+    dispLabel = dispLabel + "\r\n";
+   }
+   dispLabel = dispLabel + mystr;
+   dispLabel = suppressToNLines(dispLabel, /*nlines=*/15);
 }
 
 String suppressToNLines(String srcstr, int nlines)
@@ -120,5 +131,10 @@ String suppressToNLines(String srcstr, int nlines)
 
 
 void draw() {
-  background(0);  
+  background(150);  
+  
+  if (dispLabel.length() > 0) {
+    fill(50);
+    text(dispLabel, 10, 10, 700, 80);
+  }
 }
