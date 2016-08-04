@@ -3,6 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ *   - add suppressToNLines()
  * v0.1 2016 Aug. 05
  *   - remove [sliderValue]
  *   - remove [numSerial]
@@ -84,6 +85,28 @@ void serialEvent(Serial myPort) {
    String mystr = myPort.readStringUntil('\n');
    mystr = trim(mystr);
    println(mystr);
+}
+
+String suppressToNLines(String srcstr, int nlines)
+{
+  String[] wrk = split(srcstr, '\n');
+  int loop = min(wrk.length, nlines + 1);
+
+  int strt = 0;
+  if ( wrk.length == (nlines + 1) ) {
+     strt = 1; 
+  }
+
+  println(loop);
+
+  String res = "";
+  for(int idx = strt; idx < loop; idx++) {
+    if (res.length() > 0) {
+      res = res + '\n';
+    }
+    res = res + wrk[idx];
+  }
+  return res;
 }
 
 //void openPort() {
