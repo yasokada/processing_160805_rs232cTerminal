@@ -3,6 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ *   - remove getIntervaledValue()
  *   - remove intervalUI_setup()
  *   - remove turnOnOffUI_setup()
  *   - remove 1 second interval in draw()
@@ -125,16 +126,6 @@ void serialEvent(Serial myPort) {
 //   myPort.bufferUntil('\n');
 // }
 
-float getIntervaledValue(float amplitude, int elapsed_sec)
-{
-  final float pi = acos(-1.0);
-  //final float itvl_sec = 10;
-  int itvl_sec = int( cp5.getController(kIntervalUI).getValue() );
-  
-  float ret = amplitude * sin(2 * pi * elapsed_sec / itvl_sec);
-  
-  return ret;
-}
 
 void draw() {
   background(0);  
