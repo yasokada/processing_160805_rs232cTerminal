@@ -3,6 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ *   - remove [previousSecond]
  *   - remove checkbox:Checkbox
  *   - remove [kIntervalUI]
  *   - remove [kAmplitudeName*]
@@ -44,7 +45,6 @@ ControlP5 cp5;
 int sliderValue;
 final int numSerial = 5;
 int curSerial = -1;
-int previousSecond = -1;
 
 ControlP5 btnOpen;
 
