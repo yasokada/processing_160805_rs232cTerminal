@@ -1,8 +1,10 @@
 import processing.serial.*;
 import controlP5.*;
 import java.util.*;
+import java.text.SimpleDateFormat;
 
 /*
+ *   - show current timestamp
  *   - tweak locations of components
  * v0.2 2016 Aug. 05
  *   - show serial rx text on the window
@@ -95,6 +97,9 @@ void serialEvent(Serial myPort) {
    if (dispLabel.length() > 0) {
     dispLabel = dispLabel + "\r\n";
    }
+   
+   dispLabel = dispLabel + getCurrentTimeStamp() + " : ";
+
    dispLabel = dispLabel + mystr;
    dispLabel = suppressToNLines(dispLabel, /*nlines=*/15);
 }
@@ -119,6 +124,13 @@ String suppressToNLines(String srcstr, int nlines)
     res = res + wrk[idx];
   }
   return res;
+}
+
+String getCurrentTimeStamp() {
+    SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//dd/MM/yyyy
+    Date now = new Date();
+    String strDate = sdfDate.format(now);
+    return strDate;
 }
 
 //void openPort() {
