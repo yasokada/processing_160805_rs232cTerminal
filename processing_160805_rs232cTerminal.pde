@@ -3,6 +3,7 @@ import controlP5.*;
 import java.util.*;
 
 /*
+ *   - remove [sliderValue]
  *   - remove [numSerial]
  *   - remove [previousSecond]
  *   - remove checkbox:Checkbox
@@ -43,7 +44,6 @@ import java.util.*;
 Serial myPort;
 
 ControlP5 cp5;
-int sliderValue;
 int curSerial = -1;
 
 ControlP5 btnOpen;
