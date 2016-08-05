@@ -144,17 +144,7 @@ void serialEvent(Serial myPort) {
    String mystr = myPort.readStringUntil('\n');
    mystr = trim(mystr);
    println(mystr);
-   
-   //if (rxLabel.length() > 0) {
-   // rxLabel = rxLabel + "\r\n";
-   //}
-   
-   //rxLabel = rxLabel + getCurrentTimeStamp() + ".";
-   //rxLabel = rxLabel + getCurrentMilliSecond() + " : ";
-
-   //rxLabel = rxLabel + mystr;
-   //rxLabel = suppressToNLines(rxLabel, /*nlines=*/15);
-   
+      
    String addstr = getCurrentTimeStamp() + "." + getCurrentMilliSecond() + " : ";
    addstr = addstr + mystr;
    rxLabel = addToStringWithNLineLimited(addstr, rxLabel, /*nlines=*/15);
