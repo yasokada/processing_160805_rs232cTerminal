@@ -174,7 +174,8 @@ String getCurrentTimeStamp() {
 
 String getCurrentMilliSecond() {
   long millis = System.currentTimeMillis() % 1000;
-  return String.valueOf(millis);
+//  return String.valueOf(millis);
+  return String.format("%03d", millis);
 }
 
 //void openPort() {
