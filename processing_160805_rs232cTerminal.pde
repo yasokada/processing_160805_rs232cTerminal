@@ -4,6 +4,7 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 
 /*
+ *   - modify controlEvent() to handle input of textfield
  *   - add txInputField_setup()
  * v0.3 2016 Aug. 05
  *   - show current millisecond
@@ -86,9 +87,26 @@ void txInputField_setup()
      .setFont(createFont("arial",16))
      .setAutoClear(false)
      ;  
+     
+  //cp5.addButton("btnTx")
+  //   .setLabel(" TX ")
+  //   .setPosition(460, 20)
+  //   .setFont(createFont("arial",16))
+  //   .setSize(60,30);
+}
+
+void btnTx() {
+  // this causes error 2016 Jul. 06
+//  String str = cp5.get(Textfield.class,"btnTx").getText();
+//  print(str);
+  println("btnTx");
 }
 
 void controlEvent(ControlEvent theEvent) {
+  if(theEvent.isAssignableFrom(Textfield.class)) {
+    String txt = theEvent.getStringValue();
+    println("text:" + txt);
+  }  
 }
 
 void dropdownCOM(int n)
