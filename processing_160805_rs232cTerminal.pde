@@ -4,6 +4,8 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 
 /*
+ * v0.5 2016 Aug. 07
+ *   - tweak layout of components
  *   - add [txLabel]
  *   - add addToStringWithNLineLimited()
  *   - rename [dispLabel] to [rxLabel]
@@ -90,7 +92,7 @@ void txInputField_setup()
   cp5.addTextfield("txstring")
      .setPosition(240,20)
      .setSize(200,30)
-     .setFont(createFont("arial",16))
+     .setFont(createFont("arial",14))
      .setAutoClear(false)
      ;  
      
@@ -208,6 +210,6 @@ void draw() {
   if (rxLabel.length() > 0) {
     fill(50);
     text(txLabel, 10, 100, 700, 400);
-    text(rxLabel, 430, 100, 700, 400);
+    text(rxLabel, 330, 100, 700, 400);
   }
 }
