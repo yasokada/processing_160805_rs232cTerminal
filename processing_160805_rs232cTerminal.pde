@@ -4,6 +4,8 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 
 /*
+ * v0.4 2016 Aug. 06
+ *   - send text of input field by [Enter]
  *   - modify controlEvent() to handle input of textfield
  *   - add txInputField_setup()
  * v0.3 2016 Aug. 05
@@ -106,7 +108,13 @@ void controlEvent(ControlEvent theEvent) {
   if(theEvent.isAssignableFrom(Textfield.class)) {
     String txt = theEvent.getStringValue();
     println("text:" + txt);
-  }  
+    
+    if (curSerial > 0) {
+      txt = txt + "\n";
+      myPort.write(txt);
+      println("send"); // for debug
+    }
+  }
 }
 
 void dropdownCOM(int n)
