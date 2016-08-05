@@ -4,6 +4,7 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 
 /*
+ *   - rename [dispLabel] to [rxLabel]
  * v0.4 2016 Aug. 06
  *   - send text of input field by [Enter]
  *   - modify controlEvent() to handle input of textfield
@@ -62,7 +63,7 @@ int curSerial = -1;
 
 ControlP5 btnOpen;
 
-String dispLabel = "";
+String rxLabel = "";
 
 void setup() {
   size(700, 500);
@@ -132,15 +133,15 @@ void serialEvent(Serial myPort) {
    mystr = trim(mystr);
    println(mystr);
    
-   if (dispLabel.length() > 0) {
-    dispLabel = dispLabel + "\r\n";
+   if (rxLabel.length() > 0) {
+    rxLabel = rxLabel + "\r\n";
    }
    
-   dispLabel = dispLabel + getCurrentTimeStamp() + ".";
-   dispLabel = dispLabel + getCurrentMilliSecond() + " : ";
+   rxLabel = rxLabel + getCurrentTimeStamp() + ".";
+   rxLabel =rxLabel + getCurrentMilliSecond() + " : ";
 
-   dispLabel = dispLabel + mystr;
-   dispLabel = suppressToNLines(dispLabel, /*nlines=*/15);
+   rxLabel = rxLabel + mystr;
+   rxLabel = suppressToNLines(rxLabel, /*nlines=*/15);
 }
 
 String suppressToNLines(String srcstr, int nlines)
@@ -191,8 +192,8 @@ String getCurrentMilliSecond() {
 void draw() {
   background(150);  
   
-  if (dispLabel.length() > 0) {
+  if (rxLabel.length() > 0) {
     fill(50);
-    text(dispLabel, 10, 100, 700, 400);
+    text(rxLabel, 10, 100, 700, 400);
   }
 }
