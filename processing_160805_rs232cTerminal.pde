@@ -4,6 +4,7 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 
 /*
+ *   - add [txLabel]
  *   - add addToStringWithNLineLimited()
  *   - rename [dispLabel] to [rxLabel]
  * v0.4 2016 Aug. 06
@@ -112,6 +113,12 @@ void controlEvent(ControlEvent theEvent) {
     String txt = theEvent.getStringValue();
     
     if (curSerial > 0) {
+      // for label
+      String addstr = getCurrentTimeStamp() + "." + getCurrentMilliSecond() + " : ";
+      addstr = addstr + txt;
+      txLabel = addToStringWithNLineLimited(addstr, txLabel, /*nlines=*/15);
+      
+      // tx
       txt = txt + "\n";
       myPort.write(txt);      
     }
@@ -200,6 +207,7 @@ void draw() {
   
   if (rxLabel.length() > 0) {
     fill(50);
-    text(rxLabel, 10, 100, 700, 400);
+    text(txLabel, 10, 100, 700, 400);
+    text(rxLabel, 430, 100, 700, 400);
   }
 }
