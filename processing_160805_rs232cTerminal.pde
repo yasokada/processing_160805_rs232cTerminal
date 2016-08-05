@@ -4,6 +4,7 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 
 /*
+ *   - add addToStringWithNLineLimited()
  *   - rename [dispLabel] to [rxLabel]
  * v0.4 2016 Aug. 06
  *   - send text of input field by [Enter]
@@ -64,6 +65,7 @@ int curSerial = -1;
 ControlP5 btnOpen;
 
 String rxLabel = "";
+String txLabel = "";
 
 void setup() {
   size(700, 500);
@@ -111,7 +113,7 @@ void controlEvent(ControlEvent theEvent) {
     
     if (curSerial > 0) {
       txt = txt + "\n";
-      myPort.write(txt);
+      myPort.write(txt);      
     }
   }
 }
@@ -128,20 +130,34 @@ void dropdownCOM(int n)
   myPort.bufferUntil('\n');  
 }
 
+String addToStringWithNLineLimited(String srcstr, String dststr, int nlines)
+{
+  if (dststr.length() > 0) {
+    dststr = dststr + "\r\n";    
+  }
+  dststr = dststr + srcstr;
+  dststr = suppressToNLines(dststr, nlines);
+  return dststr;
+}
+
 void serialEvent(Serial myPort) { 
    String mystr = myPort.readStringUntil('\n');
    mystr = trim(mystr);
    println(mystr);
    
-   if (rxLabel.length() > 0) {
-    rxLabel = rxLabel + "\r\n";
-   }
+   //if (rxLabel.length() > 0) {
+   // rxLabel = rxLabel + "\r\n";
+   //}
    
-   rxLabel = rxLabel + getCurrentTimeStamp() + ".";
-   rxLabel =rxLabel + getCurrentMilliSecond() + " : ";
+   //rxLabel = rxLabel + getCurrentTimeStamp() + ".";
+   //rxLabel = rxLabel + getCurrentMilliSecond() + " : ";
 
-   rxLabel = rxLabel + mystr;
-   rxLabel = suppressToNLines(rxLabel, /*nlines=*/15);
+   //rxLabel = rxLabel + mystr;
+   //rxLabel = suppressToNLines(rxLabel, /*nlines=*/15);
+   
+   String addstr = getCurrentTimeStamp() + "." + getCurrentMilliSecond() + " : ";
+   addstr = addstr + mystr;
+   rxLabel = addToStringWithNLineLimited(addstr, rxLabel, /*nlines=*/15);
 }
 
 String suppressToNLines(String srcstr, int nlines)
