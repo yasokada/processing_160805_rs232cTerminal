@@ -107,12 +107,10 @@ void btnTx() {
 void controlEvent(ControlEvent theEvent) {
   if(theEvent.isAssignableFrom(Textfield.class)) {
     String txt = theEvent.getStringValue();
-    println("text:" + txt);
     
     if (curSerial > 0) {
       txt = txt + "\n";
       myPort.write(txt);
-      println("send"); // for debug
     }
   }
 }
