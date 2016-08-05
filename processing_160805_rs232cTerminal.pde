@@ -4,6 +4,7 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 
 /*
+ *   - add txInputField_setup()
  * v0.3 2016 Aug. 05
  *   - show current millisecond
  *   - show current timestamp
@@ -66,14 +67,25 @@ void setup() {
   
   cp5 = new ControlP5(this);
   
-  List lst = Arrays.asList(Serial.list());
+  txInputField_setup();
   
+  List lst = Arrays.asList(Serial.list());  
   cp5.addScrollableList("dropdownCOM")
      .setPosition(20, 20)
      .setSize(200, 100)
      .setBarHeight(20)
      .setItemHeight(20)
      .addItems(Serial.list());     
+}
+
+void txInputField_setup()
+{
+  cp5.addTextfield("txstring")
+     .setPosition(240,20)
+     .setSize(200,30)
+     .setFont(createFont("arial",16))
+     .setAutoClear(false)
+     ;  
 }
 
 void controlEvent(ControlEvent theEvent) {
